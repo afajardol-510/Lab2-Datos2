@@ -11,23 +11,26 @@ CSV_PATH = r"flights_final.csv"
 OUTPUT_MAP = "mapa_aeropuertos.html"
 OUTPUT_AML = "aeropuertos_mas_lejanos.html"
 
+
+#GENERACION DEL MAPA Y DEL GRAFO
 # calcular distancia (fórmula de haversine)
 def haversine(lat1, lon1, lat2, lon2):
     lat1, lon1, lat2, lon2 = map(math.radians, [lat1, lon1, lat2, lon2]) #conviertiendo cada posición de grados a radianes
-    dlat = lat2 - lat1
-    dlon = lon2 - lon1
-    a = math.sin(dlat/2)**2 + math.cos(lat1)*math.cos(lat2)*math.sin(dlon/2)**2
-    c = 6371 * 2 * math.asin(math.sqrt(a))
+    dlat = lat2 - lat1 #distancia en latitud
+    dlon = lon2 - lon1 #distancia en longitud
+    a = math.sin(dlat/2)**2 + math.cos(lat1)*math.cos(lat2)*math.sin(dlon/2)**2 #aplicación de la fórmula de haversine
+    c = 6371 * 2 * math.asin(math.sqrt(a)) #radio de la tierra por la raíz cuadrada de la aplicación anterior
     return c #distancia en kilometros entre los puntos
 
 print("Cargando dataset")
-df = pd.read_csv(CSV_PATH)
+df = pd.read_csv(CSV_PATH) #Lectura del dataset
 
 print("Construyendo grafo")
-G = nx.Graph()
+G = nx.Graph() #creando grafo con la librería Network
 
-for index, row in df.iterrows():
+for index, row in df.iterrows(): #recorrer cada fila
     try:
+        #Asignación de cada criterio del dataset
         src = row['Source Airport Code']
         dst = row['Destination Airport Code']
 
@@ -38,13 +41,13 @@ for index, row in df.iterrows():
 
         dist = haversine(lat1, lon1, lat2, lon2)
 
-        # agregar nodos
+        # Agregar nodos al grafo
         G.add_node(src, name=row['Source Airport Name'], city=row['Source Airport City'],
                    country=row['Source Airport Country'], lat=lat1, lon=lon1)
         G.add_node(dst, name=row['Destination Airport Name'], city=row['Destination Airport City'],
                    country=row['Destination Airport Country'], lat=lat2, lon=lon2)
 
-        # agregar arista (si no existe o si hay una más corta)
+        # Agregar arista nueva o cambiar si existe otra con distancia menor
         if not G.has_edge(src, dst) or dist < G[src][dst]['weight']:
             G.add_edge(src, dst, weight=dist)
     except Exception:
@@ -62,9 +65,10 @@ for n in G.nodes:
     lons.append(G.nodes[n]['lon'])
 
 center = (sum(lats) / len(lats), sum(lons) / len(lons))
+#Utilizar librería folium para crear el mapa
 m = folium.Map(location=center, zoom_start=2)
 
-# agregar marcadores
+# Agregar marcadores
 for n, d in G.nodes(data=True):
     popup = f"""
     <b>{d.get('name', '')}</b><br>
@@ -81,11 +85,12 @@ for n, d in G.nodes(data=True):
         fill_opacity=0.7
     ).add_to(m)
 
-# guardar mapa
+#Guardar mapa (no se vuelve a tener acceso)
 m.save(OUTPUT_MAP)
 print(f"Mapa guardado en: {OUTPUT_MAP}")
 
-###############################################################################################################################
+
+#ACCIONES DEL PROGRAMA
 
 lista_comp = [] #Lista de los vértices que pertenecen a cada componente
 recorrido = acciones(G) #Instancia de la clase RecorridosGrafo para usar la función
@@ -123,17 +128,19 @@ def componentes():
         last_comp = new_comp #Asignar como última componente la nueva componente
         
 
+#Determinar si el grafo es conexo, y si no lo es, mostrar la cantidad de componentes
 def conexidad():
-     #Mostrar la cantidad de componentes
-    lista_comp.clear()
-    componentes()
+    lista_comp.clear() #limpiar la lista
+    componentes() 
     cont = 1
     for l in lista_comp:
+        #Mostrar la cantidad de componentes
         print("Componente ",cont, ": ", len(l))
         cont += 1
 
+#Determinar el árbol de expansión mínima de cada componente del grafo
 def expansion_minima():   
-    lista_comp.clear()
+    lista_comp.clear() #limpiar la lista
     componentes()     
     cont = 1
     for l in lista_comp:
@@ -143,13 +150,16 @@ def expansion_minima():
         print(mst)
         cont += 1
 
+#Mostrar la información del vértice dado y de los 10 vértices más lejanos
 def informacion():
     origen = input("Código del aeropuerto de origen: ").strip().upper()
 
+    #Validación de existencia
     if origen not in G.nodes:
         print("Ese aeropuerto no existe en el grafo.")
     else:
 
+        #Información del vértice pedido
         data_origen = G.nodes[origen]
 
         print(f"""
@@ -162,12 +172,15 @@ def informacion():
         Longitud: {data_origen['lon']:.3f}
         """)
 
+    #Calcular la distancia mínima del vértice dado a los demás
         nodos, dist, pad = recorrido.dijkstra(origen)
 
+        #Nodos pertenecientes al componente
         nodos_validos = []
+        #Distancias no infinitas
         dist_validas = []
         for i in range(len(nodos)):
-            if dist[i] < math.inf:
+            if dist[i] < math.inf: 
                 nodos_validos.append(nodos[i])
                 dist_validas.append(dist[i])
 
@@ -301,6 +314,7 @@ while cont == 0:
         vertice1 = input("Digite el vértice de inicio: ").strip()
         vertice2 = input("Digite el vértice destino: ").strip()
 
+        #Validación de las entradas
         if vertice1 not in G.nodes and vertice2 not in G.nodes:
             print(f"Los vértices {vertice1} y {vertice2} no existen en el grafo.")
         elif vertice1 not in G.nodes:
@@ -313,27 +327,32 @@ while cont == 0:
         # Obtener índices de los vértices en la lista de nodos
         i_destino = nodos.index(vertice2)
 
+        #Determinar validez de la distancia
         if dist[i_destino] == float('inf'):
             print(f"->>> No existe camino entre {vertice1} y {vertice2}.")
         else:
             print(f"La distancia entre {vertice1} y {vertice2} es {dist[i_destino]:.2f} km")
 
-            # Reconstruir el camino usando listas
+            #Reconstruir el camino
+            #Inicializar la lista donde estará el camino
             camino = []
+            #Inicializar el vértice actual
             actual = vertice2
             while actual is not None:
-                camino.insert(0, actual)
-                i_actual = nodos.index(actual)
-                actual = pad[i_actual]
+                camino.insert(0, actual) #Insertar el nodo actual al inicio de la lista
+                i_actual = nodos.index(actual) #Buscar el ínice del nodo actual en la lista de los vértices
+                actual = pad[i_actual] #El nuevo vértice a iterar es el predecesor del actual
 
             print("\n>>>>>>> CAMINO MÍNIMO")
-            for i, codigo in enumerate(camino): 
+            for i, codigo in enumerate(camino): #Recorrer la lista del camino devolviendo el indice y el código
+                #Obtener los datos del vértice interado
                 datos = G.nodes[codigo]
+                #Mostrar información detallada
                 print(f"{i+1}. ({codigo}) - {datos['name']} | {datos['city']}, {datos['country']} | "
                     f"Lat: {datos['lat']:.3f}, Lon: {datos['lon']:.3f}")
             print(">>>>>>>")
 
-            ##HTML para mostrar el mapa con el camino
+            #Mostrar en el mapa
             camino_minimo(G,vertice1, vertice2, camino)                   
         
     if op == 5: 

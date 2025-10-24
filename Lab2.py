@@ -185,9 +185,19 @@ while cont == 0:
         if dist1[vertice2] == float('inf'):
             print(f"No existe camino entre {vertice1} y {vertice2}.")
         else:
+            
             print("La distancia es ", dist1[vertice2])
             camino = grafo.reconstruir_camino(prev1, vertice1, vertice2)
-            print("El camino es:", " -> ".join(camino))
+            
+            print("\n>>>>>>> CAMINO MÍNIMO ")
+            for i, codigo in enumerate(camino):
+                datos = G.nodes[codigo]
+                print(f"{i+1}. ({codigo}) - {datos['name']} | {datos['city']}, {datos['country']} | "
+                    f"Lat: {datos['lat']:.3f}, Lon: {datos['lon']:.3f}")
+                
+            print("\n>>>>>>>")
+
+
             grafo.mostrar_camino_minimo(vertice1, vertice2, camino)
 
     elif op == 2:

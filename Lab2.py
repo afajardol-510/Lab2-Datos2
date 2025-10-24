@@ -75,10 +75,6 @@ class Grafo:
         m.save(OUTPUT_MAP)
         webbrowser.open(f"file://{os.path.abspath(OUTPUT_MAP)}")
 
-        messagebox.showinfo(
-            "Camino encontrado",
-            f"Camino más corto entre {origen} y {destino}:\n{' → '.join(camino)}"
-        )
 
 CSV_PATH = os.path.join(os.path.dirname(__file__), "flights_final.csv")
 OUTPUT_MAP = "mapa_aeropuertos.html"
@@ -189,12 +185,14 @@ while cont == 0:
         if dist1[vertice2] == float('inf'):
             print(f"No existe camino entre {vertice1} y {vertice2}.")
         else:
+            print("La distancia es ", dist1[vertice2])
             camino = grafo.reconstruir_camino(prev1, vertice1, vertice2)
             print("El camino es:", " -> ".join(camino))
             grafo.mostrar_camino_minimo(vertice1, vertice2, camino)
 
     elif op == 2:
+        cont = 1
         print("Saliendo del programa...")
-        break
+        
     else:
         print("Opción no válida.")

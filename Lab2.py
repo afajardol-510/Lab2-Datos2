@@ -13,45 +13,68 @@ class Grafo:
         self.nombre = nombre
 
     def dijkstra(self, G, start):
+        # Inicializa las distancias con infinito para todos los vertices 
         dist = {node: float('inf') for node in G.nodes}
+        # Inicializa los predecesores de con None
         prev = {node: None for node in G.nodes}
+        # La distancia al nodo inicial es 0
         dist[start] = 0
+        # Cola de prioridad
         pq = [(0, start)]
 
+        # Mientras existan nodos por procesar
         while pq:
+            # Extrae el nodo con la menor distancia acumulada
             current_dist, current_node = heapq.heappop(pq)
+
+            # Si la distancia actual es mayor que la registrada, se ignora (ya se encontró un camino mejor)
             if current_dist > dist[current_node]:
                 continue
+
+            # Recorre todos los vecinos del nodo actual
             for neighbor in G.neighbors(current_node):
+                # Obtiene el peso (distancia) de la arista actual
                 weight = G[current_node][neighbor]['weight']
+                # Calcula la nueva distancia desde el origen al vecino
                 new_dist = current_dist + weight
+
+                # Si se encuentra un camino más corto hacia el vecino
                 if new_dist < dist[neighbor]:
+                    # Se actualiza la distancia mínima
                     dist[neighbor] = new_dist
+                    # Se registra el nodo previo en el camino
                     prev[neighbor] = current_node
+                    # Se agrega el vecino a la cola de prioridad para seguir explorando
                     heapq.heappush(pq, (new_dist, neighbor))
 
+        # Retorna los diccionarios con las distancias mínimas y los predecesores
         return dist, prev   # <-- fuera del while
 
-
     def reconstruir_camino(self, prev, origen, destino):
-        camino = []
-        actual = destino
+        camino = []               # Lista para guardar los nodos del camino
+        actual = destino           # Comienza desde el nodo destino
+
+        # Retrocede desde el destino hasta el origen usando los predecesores
         while actual is not None:
-            camino.insert(0, actual)
-            actual = prev[actual]
+            camino.insert(0, actual)   # Inserta al inicio de la lista (construye el camino de atrás hacia adelante)
+            actual = prev[actual]      # Avanza hacia el nodo previo
+
+        # Verifica si el camino reconstruido empieza realmente en el origen
         if camino[0] == origen:
-            return camino
+            return camino              # Devuelve el camino encontrado
         else:
-            return []
-        
+            return []                  # Si no, devuelve una lista vacía (no hay conexión)
+
     def mostrar_camino_minimo(self, origen, destino, camino):
-        # Crear mapa con el camino en rojo
+        # Obtener las coordenadas promedio de todos los aeropuertos para centrar el mapa
         lats = [G.nodes[n]['lat'] for n in G.nodes]
         lons = [G.nodes[n]['lon'] for n in G.nodes]
         center = (sum(lats) / len(lats), sum(lons) / len(lons))
+
+        # Crear el mapa base
         m = folium.Map(location=center, zoom_start=2)
 
-        # Aeropuertos normales
+        # Dibujar todos los aeropuertos como puntos azules
         for n, d in G.nodes(data=True):
             folium.CircleMarker(
                 location=(d['lat'], d['lon']),
@@ -59,10 +82,10 @@ class Grafo:
                 color='blue',
                 fill=True,
                 fill_opacity=0.7,
-                popup=f"{d['name']} ({n})"
+                popup=f"{d['name']} ({n})"  # Muestra el nombre y el código del aeropuerto
             ).add_to(m)
 
-        # Camino mínimo en rojo
+        # Si hay un camino válido, dibujarlo en rojo
         coordenadas_camino = [(G.nodes[c]['lat'], G.nodes[c]['lon']) for c in camino]
         folium.PolyLine(
             locations=coordenadas_camino,
@@ -72,8 +95,11 @@ class Grafo:
             tooltip=f"Camino mínimo: {origen} → {destino}"
         ).add_to(m)
 
+        # Guardar el mapa como archivo HTML y abrirlo en el navegador
         m.save(OUTPUT_MAP)
         webbrowser.open(f"file://{os.path.abspath(OUTPUT_MAP)}")
+
+
 
 
 CSV_PATH = os.path.join(os.path.dirname(__file__), "flights_final.csv")

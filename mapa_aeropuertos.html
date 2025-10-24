@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_18122be65a05ebcb30b38c074b3f9b20 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_18122be65a05ebcb30b38c074b3f9b20" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_18122be65a05ebcb30b38c074b3f9b20 = L.map(
+                "map_18122be65a05ebcb30b38c074b3f9b20",
+                {
+                    center: [18.632173198, -4.290008008000001],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 4,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_ea301583c7b7f927019e5b75f8062e06 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_ea301583c7b7f927019e5b75f8062e06.addTo(map_18122be65a05ebcb30b38c074b3f9b20);
+        
+    
+            var circle_marker_e6582da975619da83a705c5574a6309e = L.circleMarker(
+                [11.1196, -74.2306],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_18122be65a05ebcb30b38c074b3f9b20);
+        
+    
+        var popup_bce469f4486b2633fb4416751627832e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_55c07c4cd4fa94f29b7b2d85b648224d = $(`<div id="html_55c07c4cd4fa94f29b7b2d85b648224d" style="width: 100.0%; height: 100.0%;">Simón Bolívar International Airport (SMR)<br>Santa Marta, Colombia</div>`)[0];
+                popup_bce469f4486b2633fb4416751627832e.setContent(html_55c07c4cd4fa94f29b7b2d85b648224d);
+            
+        
+
+        circle_marker_e6582da975619da83a705c5574a6309e.bindPopup(popup_bce469f4486b2633fb4416751627832e)
+        ;
+
+        
+    
+    
+            var circle_marker_54856ff5ea415e13673b729d5c96b0c5 = L.circleMarker(
+                [6.16454, -75.4231],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_18122be65a05ebcb30b38c074b3f9b20);
+        
+    
+        var popup_963eb499320cc2b2a6de27eddb0598a9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_19f09e8e7d308b0eb14e2096570f60b8 = $(`<div id="html_19f09e8e7d308b0eb14e2096570f60b8" style="width: 100.0%; height: 100.0%;">Jose Maria Córdova International Airport (MDE)<br>Rio Negro, Colombia</div>`)[0];
+                popup_963eb499320cc2b2a6de27eddb0598a9.setContent(html_19f09e8e7d308b0eb14e2096570f60b8);
+            
+        
+
+        circle_marker_54856ff5ea415e13673b729d5c96b0c5.bindPopup(popup_963eb499320cc2b2a6de27eddb0598a9)
+        ;
+
+        
+    
+    
+            var circle_marker_57d2c9dd807b1db24cc9c28346faec3a = L.circleMarker(
+                [40.471926, -3.56264],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_18122be65a05ebcb30b38c074b3f9b20);
+        
+    
+        var popup_622b8ceef45796aff1d32e67545c4b48 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cbd5738485e9c243e732ced42db4520d = $(`<div id="html_cbd5738485e9c243e732ced42db4520d" style="width: 100.0%; height: 100.0%;">Adolfo Suárez Madrid–Barajas Airport (MAD)<br>Madrid, Spain</div>`)[0];
+                popup_622b8ceef45796aff1d32e67545c4b48.setContent(html_cbd5738485e9c243e732ced42db4520d);
+            
+        
+
+        circle_marker_57d2c9dd807b1db24cc9c28346faec3a.bindPopup(popup_622b8ceef45796aff1d32e67545c4b48)
+        ;
+
+        
+    
+    
+            var circle_marker_eeba31d1d6536fdce896321a113a9b7c = L.circleMarker(
+                [25.25279999, 55.36439896],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_18122be65a05ebcb30b38c074b3f9b20);
+        
+    
+        var popup_5ed791044d1930bc07996f9fd8564411 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_babcc9ab2c5e278222e13a5c4f65cbc7 = $(`<div id="html_babcc9ab2c5e278222e13a5c4f65cbc7" style="width: 100.0%; height: 100.0%;">Dubai International Airport (DXB)<br>Dubai, United Arab Emirates</div>`)[0];
+                popup_5ed791044d1930bc07996f9fd8564411.setContent(html_babcc9ab2c5e278222e13a5c4f65cbc7);
+            
+        
+
+        circle_marker_eeba31d1d6536fdce896321a113a9b7c.bindPopup(popup_5ed791044d1930bc07996f9fd8564411)
+        ;
+
+        
+    
+    
+            var circle_marker_e16d0baa3619a733965f67a927808997 = L.circleMarker(
+                [10.152, 76.401901],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_18122be65a05ebcb30b38c074b3f9b20);
+        
+    
+        var popup_f986c953057e3ce30577ac56c4dabc6d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_01f7015280db5b46f727f69619ab111b = $(`<div id="html_01f7015280db5b46f727f69619ab111b" style="width: 100.0%; height: 100.0%;">Cochin International Airport (COK)<br>Kochi, India</div>`)[0];
+                popup_f986c953057e3ce30577ac56c4dabc6d.setContent(html_01f7015280db5b46f727f69619ab111b);
+            
+        
+
+        circle_marker_e16d0baa3619a733965f67a927808997.bindPopup(popup_f986c953057e3ce30577ac56c4dabc6d)
+        ;
+
+        
+    
+    
+            var poly_line_679bbc834abf7d4a53d9fb0a83d1753e = L.polyline(
+                [[11.1196, -74.2306], [6.16454, -75.4231], [40.471926, -3.56264], [25.25279999, 55.36439896], [10.152, 76.401901]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_18122be65a05ebcb30b38c074b3f9b20);
+        
+    
+            poly_line_679bbc834abf7d4a53d9fb0a83d1753e.bindTooltip(
+                `<div>
+                     Camino mínimo: SMR → COK
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>

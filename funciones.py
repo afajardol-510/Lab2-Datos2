@@ -134,17 +134,15 @@ class acciones:
 
         return nodos, dist, pad   
 
-    def reconstruir_camino(self, prev, origen, destino):
-            camino = []               # Lista para guardar los nodos del camino
-            actual = destino           # Comienza desde el nodo destino
+            
+    def reconstruir_camino(self, nodos, pad, origen, destino):
+        if origen not in nodos or destino not in nodos:
+            return []
 
-            # Retrocede desde el destino hasta el origen usando los predecesores
-            while actual is not None:
-                camino.insert(0, actual)   # Inserta al inicio de la lista (construye el camino de atrás hacia adelante)
-                actual = prev[actual]      # Avanza hacia el nodo previo
-
-            # Verifica si el camino reconstruido empieza realmente en el origen
-            if camino[0] == origen:
-                return camino              # Devuelve el camino encontrado
-            else:
-                return []                  # Si no, devuelve una lista vacía (no hay conexión)
+        camino = []
+        actual = destino
+        while actual is not None:
+            camino.insert(0, actual)
+            i_actual = nodos.index(actual)
+            actual = pad[i_actual]
+        return camino

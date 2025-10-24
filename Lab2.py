@@ -9,6 +9,7 @@ import os
 
 CSV_PATH = r"flights_final.csv"
 OUTPUT_MAP = "mapa_aeropuertos.html"
+OUTPUT_AML = "aeropuertos_mas_lejanos.html"
 
 # calcular distancia (fórmula de haversine)
 def haversine(lat1, lon1, lat2, lon2):
@@ -83,6 +84,8 @@ for n, d in G.nodes(data=True):
 # guardar mapa
 m.save(OUTPUT_MAP)
 print(f"Mapa guardado en: {OUTPUT_MAP}")
+
+###############################################################################################################################
 
 lista_comp = [] #Lista de los vértices que pertenecen a cada componente
 recorrido = acciones(G) #Instancia de la clase RecorridosGrafo para usar la función
@@ -178,55 +181,94 @@ def informacion():
                     nodos_validos[j], nodos_validos[j + 1] = nodos_validos[j + 1], nodos_validos[j]
 
         print(f"\nLos 10 aeropuertos más lejanos desde {origen}:")
+        
+        #Creación del mapa de los aeropuertos más lejanos
+        origen_data = G.nodes[origen]
+        mapa = folium.Map(location=[origen_data['lat'], origen_data['lon']], zoom_start=4)
+
+        # Marcador para el aeropuerto de origen
+        folium.Marker(
+            location=[origen_data['lat'], origen_data['lon']],
+            popup=f"<b>Origen:</b> {origen}<br>{origen_data['name']}<br>{origen_data['city']}, {origen_data['country']}",
+            icon=folium.Icon(color='red', icon='circle', prefix='fa')
+        ).add_to(mapa)
 
         for i in range(min(10, len(nodos_validos))):
             code = nodos_validos[i]
             d = dist_validas[i]
             data = G.nodes[code]
             print(f"""
-    Código: {code}
-    Nombre: {data['name']}
-    Ciudad: {data['city']}
-    País: {data['country']}
-    Latitud: {data['lat']:.3f}
-    Longitud: {data['lon']:.3f}
-    Distancia: {d:.2f} km
-    """)
+            Código: {code}
+            Nombre: {data['name']}
+            Ciudad: {data['city']}
+            País: {data['country']}
+            Latitud: {data['lat']:.3f}
+            Longitud: {data['lon']:.3f}
+            Distancia: {d:.2f} km
+            """)
+            
+            # Marcador del aeropuerto
+            folium.Marker(
+                location=[data['lat'], data['lon']],
+                popup=(f"<b>{code}</b><br>{data['name']}<br>"
+                    f"{data['city']}, {data['country']}<br>"
+                    f"<b>Distancia:</b> {d:.2f} km"),
+                icon=folium.Icon(color='blue', icon='circle', prefix='fa')
+            ).add_to(mapa)
+
+            # Línea que une origen → aeropuerto
+            folium.PolyLine(
+                locations=[
+                    [origen_data['lat'], origen_data['lon']],
+                    [data['lat'], data['lon']]
+                ],
+                color='green',
+                weight=2.5,
+                opacity=0.8,
+                tooltip=f"{origen} → {code}: {d:.2f} km"
+            ).add_to(mapa)
+
+    mapa.save("aeropuertos_mas_lejanos.html")
+    webbrowser.open(f"file://{os.path.abspath(OUTPUT_AML)}")
 
 
-def camino_minimo(self, origen, destino, camino):
-    # Obtener las coordenadas promedio de todos los aeropuertos para centrar el mapa
-        lats = [G.nodes[n]['lat'] for n in G.nodes]
-        lons = [G.nodes[n]['lon'] for n in G.nodes]
-        center = (sum(lats) / len(lats), sum(lons) / len(lons))
+        
+def camino_minimo(G, origen, destino, camino):
+    # Obtener las coordenadas promedio del camino para centrar el mapa
+    lats = [G.nodes[n]['lat'] for n in camino]
+    lons = [G.nodes[n]['lon'] for n in camino]
+    center = (sum(lats) / len(lats), sum(lons) / len(lons))
 
-        # Crear el mapa base
-        m = folium.Map(location=center, zoom_start=2)
+    # Crear el mapa base
+    m = folium.Map(location=center, zoom_start=4)
 
-        # Dibujar todos los aeropuertos como puntos azules
-        for n, d in G.nodes(data=True):
-            folium.CircleMarker(
-                location=(d['lat'], d['lon']),
-                radius=3,
-                color='blue',
-                fill=True,
-                fill_opacity=0.7,
-                popup=f"{d['name']} ({n})"  # Muestra el nombre y el código del aeropuerto
-            ).add_to(m)
-
-        # Si hay un camino válido, dibujarlo en rojo
-        coordenadas_camino = [(G.nodes[c]['lat'], G.nodes[c]['lon']) for c in camino]
-        folium.PolyLine(
-            locations=coordenadas_camino,
+    # Dibujar solo los nodos del camino
+    for n in camino:
+        d = G.nodes[n]
+        folium.CircleMarker(
+            location=(d['lat'], d['lon']),
+            radius=5,
             color='red',
-            weight=3,
-            opacity=0.8,
-            tooltip=f"Camino mínimo: {origen} → {destino}"
+            fill=True,
+            fill_opacity=0.9,
+            popup=f"{d['name']} ({n})<br>{d['city']}, {d['country']}"
         ).add_to(m)
 
-        # Guardar el mapa como archivo HTML y abrirlo en el navegador
-        m.save(OUTPUT_MAP)
-        webbrowser.open(f"file://{os.path.abspath(OUTPUT_MAP)}")
+    # Dibujar la línea del camino
+    coordenadas_camino = [(G.nodes[c]['lat'], G.nodes[c]['lon']) for c in camino]
+    folium.PolyLine(
+        locations=coordenadas_camino,
+        color='red',
+        weight=3,
+        opacity=0.8,
+        tooltip=f"Camino mínimo: {origen} → {destino}"
+    ).add_to(m)
+
+    # Guardar y abrir el mapa
+    m.save(OUTPUT_MAP)
+    webbrowser.open(f"file://{os.path.abspath(OUTPUT_MAP)}")
+
+
 
 
 cont = 0
@@ -266,13 +308,35 @@ while cont == 0:
         elif vertice2 not in G.nodes:
             print(f"El vértice {vertice2} no existe en el grafo.")
         else:
-            break
+            nodos, dist, pad = recorrido.dijkstra(vertice1)
+
+        # Obtener índices de los vértices en la lista de nodos
+        i_destino = nodos.index(vertice2)
+
+        if dist[i_destino] == float('inf'):
+            print(f"->>> No existe camino entre {vertice1} y {vertice2}.")
+        else:
+            print(f"La distancia entre {vertice1} y {vertice2} es {dist[i_destino]:.2f} km")
+
+            # Reconstruir el camino usando listas
+            camino = []
+            actual = vertice2
+            while actual is not None:
+                camino.insert(0, actual)
+                i_actual = nodos.index(actual)
+                actual = pad[i_actual]
+
+            print("\n>>>>>>> CAMINO MÍNIMO")
+            for i, codigo in enumerate(camino): 
+                datos = G.nodes[codigo]
+                print(f"{i+1}. ({codigo}) - {datos['name']} | {datos['city']}, {datos['country']} | "
+                    f"Lat: {datos['lat']:.3f}, Lon: {datos['lon']:.3f}")
+            print(">>>>>>>")
+
+            ##HTML para mostrar el mapa con el camino
+            camino_minimo(G,vertice1, vertice2, camino)                   
+        
+    if op == 5: 
+        cont = 1
     
-    #nodos, dist, pad = recorrido.dijkstra(origen)
-    nodos, dist, prev = recorrido.dijkstra(vertice1)
-    if dist[vertice2] == float('inf'):
-        print(f"No existe camino entre {vertice1} y {vertice2}.")
-    else:       
-        print("La distancia es ", dist[vertice2])
-        camino = recorrido.reconstruir_camino(prev, vertice1, vertice2)
 

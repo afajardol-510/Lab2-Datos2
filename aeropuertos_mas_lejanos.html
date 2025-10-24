@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_71bc8b2734a9ca4f6061213e09a2a7ca {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_71bc8b2734a9ca4f6061213e09a2a7ca" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_71bc8b2734a9ca4f6061213e09a2a7ca = L.map(
+                "map_71bc8b2734a9ca4f6061213e09a2a7ca",
+                {
+                    center: [-51.82279968, -58.44720078],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 4,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_8e0a4045295a8c16e5587223909766cd = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_8e0a4045295a8c16e5587223909766cd.addTo(map_71bc8b2734a9ca4f6061213e09a2a7ca);
+        
+    
+            var marker_8914223196dcdd4ffda3f9d3dc257a8a = L.marker(
+                [-51.82279968, -58.44720078],
+                {
+}
+            ).addTo(map_71bc8b2734a9ca4f6061213e09a2a7ca);
+        
+    
+            var icon_4b40e29a38e917ca6407e0bad762c138 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fec34a9b3ab91cef23358d16a46a6f80 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_187274bdebe35b761231dc8abf14a12c = $(`<div id="html_187274bdebe35b761231dc8abf14a12c" style="width: 100.0%; height: 100.0%;"><b>Origen:</b> MPN<br>Mount Pleasant Airport<br>Mount Pleasant, Falkland Islands</div>`)[0];
+                popup_fec34a9b3ab91cef23358d16a46a6f80.setContent(html_187274bdebe35b761231dc8abf14a12c);
+            
+        
+
+        marker_8914223196dcdd4ffda3f9d3dc257a8a.bindPopup(popup_fec34a9b3ab91cef23358d16a46a6f80)
+        ;
+
+        
+    
+    
+                marker_8914223196dcdd4ffda3f9d3dc257a8a.setIcon(icon_4b40e29a38e917ca6407e0bad762c138);
+            
+    
+            var marker_5b8c8a0d389896589944cda7ce770ab1 = L.marker(
+                [23.08329964, 113.0699997],
+                {
+}
+            ).addTo(map_71bc8b2734a9ca4f6061213e09a2a7ca);
+        
+    
+            var icon_53e00e3660fba22c892be28c5674202a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d89f5ed6f830381d3f7c296079eebe22 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5fe886908c8765086226c1131d8760a7 = $(`<div id="html_5fe886908c8765086226c1131d8760a7" style="width: 100.0%; height: 100.0%;"><b>FUO</b><br>Foshan Shadi Airport<br>Foshan, China<br><b>Distancia:</b> 24110.66 km</div>`)[0];
+                popup_d89f5ed6f830381d3f7c296079eebe22.setContent(html_5fe886908c8765086226c1131d8760a7);
+            
+        
+
+        marker_5b8c8a0d389896589944cda7ce770ab1.bindPopup(popup_d89f5ed6f830381d3f7c296079eebe22)
+        ;
+
+        
+    
+    
+                marker_5b8c8a0d389896589944cda7ce770ab1.setIcon(icon_53e00e3660fba22c892be28c5674202a);
+            
+    
+            var poly_line_cf603638cee39ff8058399147ae7098a = L.polyline(
+                [[-51.82279968, -58.44720078], [23.08329964, 113.0699997]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_71bc8b2734a9ca4f6061213e09a2a7ca);
+        
+    
+            poly_line_cf603638cee39ff8058399147ae7098a.bindTooltip(
+                `<div>
+                     MPN → FUO: 24110.66 km
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_875948b159916b34d5fae143efcb46e4 = L.marker(
+                [32.39110184, 105.7020035],
+                {
+}
+            ).addTo(map_71bc8b2734a9ca4f6061213e09a2a7ca);
+        
+    
+            var icon_4864a3c364bfb868a40d31b143cc934f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bde7837726736db053c277c910a38684 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_109ee071cd1aa80dc40403989eeb170e = $(`<div id="html_109ee071cd1aa80dc40403989eeb170e" style="width: 100.0%; height: 100.0%;"><b>GYS</b><br>Guangyuan Airport<br>Guangyuan, China<br><b>Distancia:</b> 23148.17 km</div>`)[0];
+                popup_bde7837726736db053c277c910a38684.setContent(html_109ee071cd1aa80dc40403989eeb170e);
+            
+        
+
+        marker_875948b159916b34d5fae143efcb46e4.bindPopup(popup_bde7837726736db053c277c910a38684)
+        ;
+
+        
+    
+    
+                marker_875948b159916b34d5fae143efcb46e4.setIcon(icon_4864a3c364bfb868a40d31b143cc934f);
+            
+    
+            var poly_line_1f460bda97f333eb97bd3e4a44a7c69c = L.polyline(
+                [[-51.82279968, -58.44720078], [32.39110184, 105.7020035]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_71bc8b2734a9ca4f6061213e09a2a7ca);
+        
+    
+            poly_line_1f460bda97f333eb97bd3e4a44a7c69c.bindTooltip(
+                `<div>
+                     MPN → GYS: 23148.17 km
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_35b129d01b453de988f9c709d223eb46 = L.marker(
+                [25.67469978, 116.7470016],
+                {
+}
+            ).addTo(map_71bc8b2734a9ca4f6061213e09a2a7ca);
+        
+    
+            var icon_b82b463331b6f6867ca5b0910e6699e3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a4fd90f086c8b422b71dfbc5305f00a9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e5a5c2996aab1903e10b8d3b5e5a9035 = $(`<div id="html_e5a5c2996aab1903e10b8d3b5e5a9035" style="width: 100.0%; height: 100.0%;"><b>LCX</b><br>Longyan Guanzhishan Airport<br>Longyan, China<br><b>Distancia:</b> 23103.04 km</div>`)[0];
+                popup_a4fd90f086c8b422b71dfbc5305f00a9.setContent(html_e5a5c2996aab1903e10b8d3b5e5a9035);
+            
+        
+
+        marker_35b129d01b453de988f9c709d223eb46.bindPopup(popup_a4fd90f086c8b422b71dfbc5305f00a9)
+        ;
+
+        
+    
+    
+                marker_35b129d01b453de988f9c709d223eb46.setIcon(icon_b82b463331b6f6867ca5b0910e6699e3);
+            
+    
+            var poly_line_d53a40c3220a0ad88d4dd459f737d948 = L.polyline(
+                [[-51.82279968, -58.44720078], [25.67469978, 116.7470016]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_71bc8b2734a9ca4f6061213e09a2a7ca);
+        
+    
+            poly_line_d53a40c3220a0ad88d4dd459f737d948.bindTooltip(
+                `<div>
+                     MPN → LCX: 23103.04 km
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_50d69f481c17502cbdc97d9adcd0c7b0 = L.marker(
+                [46.74638889, 125.1405556],
+                {
+}
+            ).addTo(map_71bc8b2734a9ca4f6061213e09a2a7ca);
+        
+    
+            var icon_ed3a40b6acf31d5a980c8d220ef2dace = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1d4c09114be79672612a4cba04d750a6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9afe7eb1927c2f6ed357aad95bf09096 = $(`<div id="html_9afe7eb1927c2f6ed357aad95bf09096" style="width: 100.0%; height: 100.0%;"><b>DQA</b><br>Saertu Airport<br>Daqing, China<br><b>Distancia:</b> 23076.90 km</div>`)[0];
+                popup_1d4c09114be79672612a4cba04d750a6.setContent(html_9afe7eb1927c2f6ed357aad95bf09096);
+            
+        
+
+        marker_50d69f481c17502cbdc97d9adcd0c7b0.bindPopup(popup_1d4c09114be79672612a4cba04d750a6)
+        ;
+
+        
+    
+    
+                marker_50d69f481c17502cbdc97d9adcd0c7b0.setIcon(icon_ed3a40b6acf31d5a980c8d220ef2dace);
+            
+    
+            var poly_line_61a2fffde8cf050273e910544670bbd7 = L.polyline(
+                [[-51.82279968, -58.44720078], [46.74638889, 125.1405556]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_71bc8b2734a9ca4f6061213e09a2a7ca);
+        
+    
+            poly_line_61a2fffde8cf050273e910544670bbd7.bindTooltip(
+                `<div>
+                     MPN → DQA: 23076.90 km
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_e89885db864316b815dc78ecb412e429 = L.marker(
+                [47.23960114, 123.9179993],
+                {
+}
+            ).addTo(map_71bc8b2734a9ca4f6061213e09a2a7ca);
+        
+    
+            var icon_519372af1ad00b77dc9239a3dc295ed2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9a9b3fcf042ba6f159734756b5687aa6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_68f0b44cb3d264c8635151a51fab6377 = $(`<div id="html_68f0b44cb3d264c8635151a51fab6377" style="width: 100.0%; height: 100.0%;"><b>NDG</b><br>Qiqihar Sanjiazi Airport<br>Qiqihar, China<br><b>Distancia:</b> 23054.53 km</div>`)[0];
+                popup_9a9b3fcf042ba6f159734756b5687aa6.setContent(html_68f0b44cb3d264c8635151a51fab6377);
+            
+        
+
+        marker_e89885db864316b815dc78ecb412e429.bindPopup(popup_9a9b3fcf042ba6f159734756b5687aa6)
+        ;
+
+        
+    
+    
+                marker_e89885db864316b815dc78ecb412e429.setIcon(icon_519372af1ad00b77dc9239a3dc295ed2);
+            
+    
+            var poly_line_d22f86cc069bb1c8bcbb26495f65873f = L.polyline(
+                [[-51.82279968, -58.44720078], [47.23960114, 123.9179993]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_71bc8b2734a9ca4f6061213e09a2a7ca);
+        
+    
+            poly_line_d22f86cc069bb1c8bcbb26495f65873f.bindTooltip(
+                `<div>
+                     MPN → NDG: 23054.53 km
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_c33ac700f08a58c5667087e87541e1c3 = L.marker(
+                [53.16790009, 158.4539948],
+                {
+}
+            ).addTo(map_71bc8b2734a9ca4f6061213e09a2a7ca);
+        
+    
+            var icon_81cd35472269472728f696b2f74a9bd2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ac3a00852cea4758e2f68f6e293b519f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_208d66c8595847b7b891b407ab923417 = $(`<div id="html_208d66c8595847b7b891b407ab923417" style="width: 100.0%; height: 100.0%;"><b>PKC</b><br>Yelizovo Airport<br>Petropavlovsk, Russia<br><b>Distancia:</b> 23053.60 km</div>`)[0];
+                popup_ac3a00852cea4758e2f68f6e293b519f.setContent(html_208d66c8595847b7b891b407ab923417);
+            
+        
+
+        marker_c33ac700f08a58c5667087e87541e1c3.bindPopup(popup_ac3a00852cea4758e2f68f6e293b519f)
+        ;
+
+        
+    
+    
+                marker_c33ac700f08a58c5667087e87541e1c3.setIcon(icon_81cd35472269472728f696b2f74a9bd2);
+            
+    
+            var poly_line_f8ee383e8d713bc5a5353ea4a1ca8ad5 = L.polyline(
+                [[-51.82279968, -58.44720078], [53.16790009, 158.4539948]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_71bc8b2734a9ca4f6061213e09a2a7ca);
+        
+    
+            poly_line_f8ee383e8d713bc5a5353ea4a1ca8ad5.bindTooltip(
+                `<div>
+                     MPN → PKC: 23053.60 km
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_cb65cb316a3544a001ebb92c32456048 = L.marker(
+                [38.061298, 128.669006],
+                {
+}
+            ).addTo(map_71bc8b2734a9ca4f6061213e09a2a7ca);
+        
+    
+            var icon_1a67fc9aa8cd16332bb6980073428949 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f4ed202e5db840fb53ba62051a4025b8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7800a1c42d85c70b4c9acf2aa38bec73 = $(`<div id="html_7800a1c42d85c70b4c9acf2aa38bec73" style="width: 100.0%; height: 100.0%;"><b>YNY</b><br>Yangyang International Airport<br>Sokcho / Gangneung, South Korea<br><b>Distancia:</b> 23045.08 km</div>`)[0];
+                popup_f4ed202e5db840fb53ba62051a4025b8.setContent(html_7800a1c42d85c70b4c9acf2aa38bec73);
+            
+        
+
+        marker_cb65cb316a3544a001ebb92c32456048.bindPopup(popup_f4ed202e5db840fb53ba62051a4025b8)
+        ;
+
+        
+    
+    
+                marker_cb65cb316a3544a001ebb92c32456048.setIcon(icon_1a67fc9aa8cd16332bb6980073428949);
+            
+    
+            var poly_line_74ce4c81ba68c690571fd0960bf666ba = L.polyline(
+                [[-51.82279968, -58.44720078], [38.061298, 128.669006]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_71bc8b2734a9ca4f6061213e09a2a7ca);
+        
+    
+            poly_line_74ce4c81ba68c690571fd0960bf666ba.bindTooltip(
+                `<div>
+                     MPN → YNY: 23045.08 km
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_9d868f48a4ccabb22f3d95c24bd9b835 = L.marker(
+                [30.32029915, 109.4850006],
+                {
+}
+            ).addTo(map_71bc8b2734a9ca4f6061213e09a2a7ca);
+        
+    
+            var icon_1881840a32447ee25ae33dcfc248ebb9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bb779dc082b04ea94827da420a3f3113 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4d07c8e263186093ac78aed652035e01 = $(`<div id="html_4d07c8e263186093ac78aed652035e01" style="width: 100.0%; height: 100.0%;"><b>ENH</b><br>Enshi Airport<br>Enshi, China<br><b>Distancia:</b> 22937.64 km</div>`)[0];
+                popup_bb779dc082b04ea94827da420a3f3113.setContent(html_4d07c8e263186093ac78aed652035e01);
+            
+        
+
+        marker_9d868f48a4ccabb22f3d95c24bd9b835.bindPopup(popup_bb779dc082b04ea94827da420a3f3113)
+        ;
+
+        
+    
+    
+                marker_9d868f48a4ccabb22f3d95c24bd9b835.setIcon(icon_1881840a32447ee25ae33dcfc248ebb9);
+            
+    
+            var poly_line_633190eb32f8c1bf7cd47107d6954e4a = L.polyline(
+                [[-51.82279968, -58.44720078], [30.32029915, 109.4850006]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_71bc8b2734a9ca4f6061213e09a2a7ca);
+        
+    
+            poly_line_633190eb32f8c1bf7cd47107d6954e4a.bindTooltip(
+                `<div>
+                     MPN → ENH: 22937.64 km
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_45dcee55c7814d7433f8d46fa3ef216e = L.marker(
+                [28.56220055, 121.4290009],
+                {
+}
+            ).addTo(map_71bc8b2734a9ca4f6061213e09a2a7ca);
+        
+    
+            var icon_fa4776aa6b114fd231bfd3c2b192b63c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_78e2c3b26cc818d065d05c9a8c009174 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_adf3d0481f244aff0b202f13a9ec4d79 = $(`<div id="html_adf3d0481f244aff0b202f13a9ec4d79" style="width: 100.0%; height: 100.0%;"><b>HYN</b><br>Huangyan Luqiao Airport<br>Huangyan, China<br><b>Distancia:</b> 22895.58 km</div>`)[0];
+                popup_78e2c3b26cc818d065d05c9a8c009174.setContent(html_adf3d0481f244aff0b202f13a9ec4d79);
+            
+        
+
+        marker_45dcee55c7814d7433f8d46fa3ef216e.bindPopup(popup_78e2c3b26cc818d065d05c9a8c009174)
+        ;
+
+        
+    
+    
+                marker_45dcee55c7814d7433f8d46fa3ef216e.setIcon(icon_fa4776aa6b114fd231bfd3c2b192b63c);
+            
+    
+            var poly_line_385bef0b22106025c7685409baf81f2a = L.polyline(
+                [[-51.82279968, -58.44720078], [28.56220055, 121.4290009]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_71bc8b2734a9ca4f6061213e09a2a7ca);
+        
+    
+            poly_line_385bef0b22106025c7685409baf81f2a.bindTooltip(
+                `<div>
+                     MPN → HYN: 22895.58 km
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_03f26e410eb8d6cd0d26d0361239c7b1 = L.marker(
+                [47.3106, 119.9117],
+                {
+}
+            ).addTo(map_71bc8b2734a9ca4f6061213e09a2a7ca);
+        
+    
+            var icon_263f7bb031a72ca19dba0e3bd50a1ec9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4f679dd633c7dfe421c8b34b544296c9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b6e5d48e83408a7a999c0d798b2e1908 = $(`<div id="html_b6e5d48e83408a7a999c0d798b2e1908" style="width: 100.0%; height: 100.0%;"><b>YIE</b><br>Arxan Yi'ershi Airport<br>Arxan, China<br><b>Distancia:</b> 22787.92 km</div>`)[0];
+                popup_4f679dd633c7dfe421c8b34b544296c9.setContent(html_b6e5d48e83408a7a999c0d798b2e1908);
+            
+        
+
+        marker_03f26e410eb8d6cd0d26d0361239c7b1.bindPopup(popup_4f679dd633c7dfe421c8b34b544296c9)
+        ;
+
+        
+    
+    
+                marker_03f26e410eb8d6cd0d26d0361239c7b1.setIcon(icon_263f7bb031a72ca19dba0e3bd50a1ec9);
+            
+    
+            var poly_line_d193c76bfebffca271da6e45ca52c6fb = L.polyline(
+                [[-51.82279968, -58.44720078], [47.3106, 119.9117]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_71bc8b2734a9ca4f6061213e09a2a7ca);
+        
+    
+            poly_line_d193c76bfebffca271da6e45ca52c6fb.bindTooltip(
+                `<div>
+                     MPN → YIE: 22787.92 km
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>
